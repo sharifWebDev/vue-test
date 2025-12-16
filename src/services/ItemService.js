@@ -3,7 +3,7 @@ import axiosClient from "@/axiosClient";
 
 export const fetchItemAPI = async ({ page, search, length }) => {
   try {
-    const response = await axiosClient.get("/answer_builders", {
+    const response = await axiosClient.get("/hk-prod-size-types", {
       params: {
         page,
         search,
