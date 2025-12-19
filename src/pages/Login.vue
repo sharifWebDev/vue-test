@@ -1,24 +1,441 @@
+<template>
+  <div :class="[
+    'min-h-screen transition-all duration-500 ease-in-out m-0',
+    darkMode ? 'bg-gradient-to-br from-gray-900 to-gray-800' : ''
+  ]">
+    <div class="flex flex-col lg:flex-row align-center justify-center min-h-screen">
+      <!-- Left Side Banner (50%) - Enhanced Design -->
+      <div :class="[
+        'lg:w-1/3 relative overflow-hidden transition-all duration-700']">
+        <!-- Animated Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" 
+               :style="{
+                 backgroundImage: darkMode 
+                   ? 'radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)'
+                   : 'radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%)'
+               }">
+          </div>
+        </div>
+
+        <!-- Floating Shapes -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-20 animate-pulse"
+             :class="darkMode ? 'bg-purple-500/20' : 'bg-primary-300/30'"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-10 animate-pulse delay-1000"
+             :class="darkMode ? 'bg-blue-500/20' : 'bg-primary-400/20'"></div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+          <!-- Header with Theme Toggle -->
+          <div class="flex justify-between items-start">
+            <div class="flex items-center space-x-3">
+              <div :class="[
+                'w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 border border',
+                darkMode ? 'bg-white/10 backdrop-blur-lg' : 'bg-white backdrop-blur-sm'
+              ]">
+                <i class="fas fa-cube text-xl" :class="darkMode ? 'text-primary-300' : 'text-primary-600'"></i>
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold transition-colors duration-500" 
+                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                  AppBuilder<span :class="darkMode ? 'text-primary-300' : 'text-primary-600'">Pro</span>
+                </h2>
+                <p class="text-sm transition-colors duration-500"
+                   :class="darkMode ? 'text-primary-200' : 'text-primary-500'">
+                  Business Application Platform
+                </p>
+              </div>
+            </div>
+
+            <!-- Theme Toggle Button -->
+            <button
+              @click="toggleTheme"
+              :class="[
+                'w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 hover:scale-105 active:scale-95',
+                darkMode ? 'bg-white/10 hover:bg-white/20 backdrop-blur-lg' : 'bg-white hover:bg-gray-50 backdrop-blur-sm'
+              ]"
+              aria-label="Toggle theme"
+            >
+              <i :class="[
+                'fas text-lg transition-transform duration-500',
+                darkMode ? 'fa-sun text-yellow-300 rotate-180' : 'fa-moon text-primary-600'
+              ]"></i>
+            </button>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="mt-16 max-w-md animate-slide-up">
+            <h5 class="text-2xl md:text-3xl font-bold mb-6 transition-colors duration-500"
+                :class="darkMode ? 'text-white' : 'text-gray-800'">
+              Build Professional Applications Faster
+            </h5>
+            
+            <!-- Feature List -->
+            <div class="space-y-6">
+              <div v-for="(feature, index) in features" :key="index"
+                   class="flex items-start space-x-4 animate-slide-up"
+                   :style="{ animationDelay: `${index * 100}ms` }">
+                <div :class="[
+                  'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-500',
+                  darkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-primary-50 hover:bg-primary-100'
+                ]">
+                  <i :class="feature.icon" class="text-lg transition-colors duration-500" ></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold mb-1 transition-colors duration-500"
+                      :class="darkMode ? 'text-white' : 'text-gray-800'">
+                    {{ feature.title }}
+                  </h3>
+                  <p class="text-sm transition-colors duration-500"
+                     :class="darkMode ? 'text-primary-200' : 'text-primary-600'">
+                    {{ feature.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Footer Stats -->
+          <div class="mt-12 animate-slide-up" style="animation-delay: 400ms">
+            <div :class="[
+              'inline-flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-500',
+              darkMode ? 'bg-white/5 backdrop-blur-lg' : 'bg-white/80 backdrop-blur-sm'
+            ]">
+              <div class="text-center">
+                <div class="text-2xl font-bold transition-colors duration-500"
+                     :class="darkMode ? 'text-white' : 'text-primary-600'">5,000+</div>
+                <div class="text-xs transition-colors duration-500"
+                     :class="darkMode ? 'text-primary-300' : 'text-primary-500'">Businesses</div>
+              </div>
+              <div class="w-px h-8" :class="darkMode ? 'bg-white/20' : 'bg-primary-200'"></div>
+              <div class="text-center">
+                <div class="text-2xl font-bold transition-colors duration-500"
+                     :class="darkMode ? 'text-white' : 'text-primary-600'">98%</div>
+                <div class="text-xs transition-colors duration-500"
+                     :class="darkMode ? 'text-primary-300' : 'text-primary-500'">Satisfaction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Login Form (50%) - Enhanced Design -->
+      <div class="lg:w-1/2 flex items-center justify-center p-6 md:p-12">
+        <div class="w-full max-w-md animate-slide-up" style="animation-delay: 200ms">
+          <!-- Form Container -->
+          <div :class="[
+            'rounded-3xl p-8 transition-all duration-500 overflow-hidden relative border shadow',
+            darkMode ? 'bg-gray-800/80 backdrop-blur-lg border border-gray-700/50' : 'bg-white/90 backdrop-blur-sm border border-white/50'
+          ]"> 
+            <!-- Header -->
+            <div class="text-center mb-8">
+              <div :class="[
+                'w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500',
+                darkMode ? 'bg-gradient-to-br from-primary-600/20 to-purple-600/20 border border-primary-500/20' : 'bg-gray-50 border border-gray-100'
+              ]">
+                <i class="fas fa-lock text-2xl" :class="darkMode ? 'text-primary-300' : 'text-primary-600'"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-2 transition-colors duration-500"
+                  :class="darkMode ? 'text-white' : 'text-gray-800'">
+                Welcome Back
+              </h3>
+              <p class="transition-colors duration-500"
+                 :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                Sign in to your account to continue
+              </p>
+            </div>
+
+            <!-- Messages -->
+            <div v-if="successMessage" 
+                 :class="[
+                   'mb-6 p-4 rounded-xl border transition-all duration-500 animate-slide-down',
+                   darkMode ? 'bg-green-900/30 border-green-800' : 'bg-green-50 border-green-200'
+                 ]">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle mr-3 transition-colors duration-500"
+                   :class="darkMode ? 'text-green-400' : 'text-green-600'"></i>
+                <span :class="darkMode ? 'text-green-300' : 'text-green-800'">{{ successMessage }}</span>
+              </div>
+            </div>
+            
+            <div v-if="errorMessage" 
+                 :class="[
+                   'mb-6 p-4 rounded-xl border transition-all duration-500 animate-slide-down',
+                   darkMode ? 'bg-red-900/30 border-red-800' : 'bg-red-50 border-red-200'
+                 ]">
+              <div class="flex items-center">
+                <i class="fas fa-exclamation-circle mr-3 transition-colors duration-500"
+                   :class="darkMode ? 'text-red-400' : 'text-red-600'"></i>
+                <span :class="darkMode ? 'text-red-300' : 'text-red-800'">{{ errorMessage }}</span>
+              </div>
+            </div>
+
+            <!-- Login Form -->
+            <form @submit.prevent="handleSubmit" class="space-y-6">
+              <!-- Email Field -->
+              <div>
+                <label :class="[
+                  'block text-sm font-medium mb-2 transition-colors duration-500',
+                  darkMode ? 'text-gray-300' : 'text-gray-700'
+                ]">
+                  Email Address
+                  <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-envelope transition-colors duration-500"
+                       :class="darkMode ? 'text-gray-500' : 'text-gray-400'"></i>
+                  </div>
+                  <input
+                    type="email"
+                    v-model.trim="form.email"
+                    placeholder="you@example.com"
+                    :class="[
+                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder:transition-colors',
+                      darkMode 
+                        ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:bg-gray-700'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:bg-white',
+                      errors.email.length
+                        ? 'border-red-500 focus:ring-red-500'
+                        : 'border-gray-300'
+                    ]"
+                    @blur="validateField('email')"
+                    @input="clearFieldError('email')"
+                  />
+                  <div v-if="form.email && !errors.email.length" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                    <i class="fas fa-check transition-colors duration-500"
+                       :class="darkMode ? 'text-green-400' : 'text-green-500'"></i>
+                  </div>
+                </div>
+                <div v-if="errors.email.length" class="mt-2 flex items-center space-x-2 text-sm animate-slide-down">
+                  <i class="fas fa-exclamation-circle text-red-500"></i>
+                  <span :class="darkMode ? 'text-red-400' : 'text-red-600'">{{ errors.email[0] }}</span>
+                </div>
+              </div>
+
+              <!-- Password Field -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <label :class="[
+                    'block text-sm font-medium transition-colors duration-500',
+                    darkMode ? 'text-gray-300' : 'text-gray-700'
+                  ]">
+                    Password
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <button
+                    type="button"
+                    @click="showPassword = !showPassword"
+                    :class="[
+                      'text-sm transition-colors duration-500 flex items-center space-x-1 hover:scale-105 active:scale-95',
+                      darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                    ]"
+                  >
+                    <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                    <span>{{ showPassword ? 'Hide' : 'Show' }}</span>
+                  </button>
+                </div>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-lock transition-colors duration-500"
+                       :class="darkMode ? 'text-gray-500' : 'text-gray-400'"></i>
+                  </div>
+                  <input
+                    :type="showPassword ? 'text' : 'password'"
+                    v-model.trim="form.password"
+                    placeholder="Enter your password"
+                    :class="[
+                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder:transition-colors',
+                      darkMode 
+                        ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:bg-gray-700'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:bg-white',
+                      errors.password.length
+                        ? 'border-red-500 focus:ring-red-500'
+                        : 'border-gray-300'
+                    ]"
+                    @blur="validateField('password')"
+                    @input="clearFieldError('password')"
+                  />
+                </div>
+                
+                <!-- Password Strength -->
+                <div v-if="form.password && !errors.password.length" class="mt-4 space-y-2 animate-slide-up">
+                  <div class="flex items-center justify-between text-xs transition-colors duration-500"
+                       :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                    <span>Password strength</span>
+                    <span :class="passwordStrengthClass">{{ passwordStrengthText }}</span>
+                  </div>
+                  <div :class="[
+                    'w-full rounded-full h-1.5 transition-colors duration-500',
+                    darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                  ]">
+                    <div 
+                      class="h-1.5 rounded-full transition-all duration-500"
+                      :class="passwordStrengthBarClass"
+                      :style="{ width: passwordStrength + '%' }"
+                    ></div>
+                  </div>
+                </div>
+                
+                <div v-if="errors.password.length" class="mt-2 flex items-center space-x-2 text-sm animate-slide-down">
+                  <i class="fas fa-exclamation-circle text-red-500"></i>
+                  <span :class="darkMode ? 'text-red-400' : 'text-red-600'">{{ errors.password[0] }}</span>
+                </div>
+              </div>
+
+              <!-- Remember & Forgot -->
+              <div class="flex items-center justify-between">
+                <label :class="[
+                  'flex items-center space-x-3 cursor-pointer transition-colors duration-500',
+                  darkMode ? 'text-gray-300' : 'text-gray-700'
+                ]">
+                  <div class="relative">
+                    <input
+                      type="checkbox"
+                      v-model="form.remember"
+                      class="sr-only"
+                    />
+                    <div :class="[
+                      'w-5 h-5 rounded border transition-colors duration-500 flex items-center justify-center transition-all duration-300',
+                      darkMode 
+                        ? form.remember ? 'bg-primary-500 border-primary-500' : 'border-gray-500 hover:border-gray-400'
+                        : form.remember ? 'bg-primary-500 border-primary-500' : 'border-gray-300 hover:border-gray-400'
+                    ]">
+                      <i v-if="form.remember" class="fas fa-check text-white text-xs"></i>
+                    </div>
+                  </div>
+                  <span class="text-sm">Remember me</span>
+                </label>
+                
+                <router-link
+                  to="/forgot-password"
+                  :class="[
+                    'text-sm transition-colors duration-500 hover:scale-105 active:scale-95 font-medium',
+                    darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                  ]"
+                >
+                  Forgot password?
+                </router-link>
+              </div>
+
+              <!-- Login Button -->
+              <button
+                type="submit"
+                :disabled="loadingBtn || !form.email || !form.password"
+                :class="[
+                  'w-full py-2 rounded-xl font-semibold transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center',
+                  darkMode 
+                    ? 'bg-gradient-to-r from-primary-600 to-purple-600 text-white hover:hover:shadow-primary-500/25'
+                    : 'bg-purple-700 text-white hover:bg-purple-800 text-white',
+                  !loadingBtn && !disabled ? 'hover:scale-[1.02] active:scale-[0.98]' : ''
+                ]"
+              >
+                <span v-if="loadingBtn" class="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5 mr-3"></span>
+                <span class="flex items-center">{{ loadingBtn ? 'Signing in...' : 'Sign in to Account' }}</span>
+                <i v-if="!loadingBtn" class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+              </button>
+
+              <!-- Social Login Divider -->
+              <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                  <div :class="[
+                    'w-full border-t transition-colors duration-500',
+                    darkMode ? 'border-gray-700' : 'border-gray-300'
+                  ]"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                  <span :class="[
+                    'px-4 transition-colors duration-500',
+                    darkMode ? 'text-gray-500 bg-gray-800/80' : 'text-gray-500 bg-white/90'
+                  ]">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+
+              <!-- Social Login Buttons -->
+              <div class="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  v-for="(provider, index) in socialProviders"
+                  :key="provider.name"
+                  @click="socialLogin(provider.name)"
+                  :class="[
+                    'flex items-center justify-center space-x-3 w-full py-3 px-4 rounded-xl transition-all duration-500 hover',
+                    darkMode 
+                      ? 'bg-gray-700/50 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500'
+                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400',
+                    !loading ? 'hover:scale-[1.02] active:scale-[0.98]' : ''
+                  ]"
+                  :style="{ animationDelay: `${index * 100}ms` }"
+                  class="animate-slide-up"
+                >
+                  <i :class="provider.icon"  ></i>
+                  <span class="text-sm font-medium">{{ provider.name }}</span>
+                </button>
+              </div>
+
+              <!-- Register Link -->
+              <div class="text-center pt-6 border-t transition-colors duration-500"
+                   :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                <p :class="[
+                  'transition-colors duration-500',
+                  darkMode ? 'text-gray-400' : 'text-gray-600'
+                ]">
+                  Don't have an account?
+                  <router-link
+                    to="/register"
+                    :class="[
+                      'font-semibold transition-all duration-500 hover:scale-105 active:scale-95 ml-1',
+                      darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                    ]"
+                  >
+                    Sign up now
+                  </router-link>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Footer -->
+          <div class="mt-8 text-center text-sm transition-colors duration-500"
+               :class="darkMode ? 'text-gray-500' : 'text-gray-400'">
+            <p>By signing in, you agree to our</p>
+            <p>
+              <router-link :to="link.to" v-for="link in footerLinks" :key="link.text"
+                :class="[
+                  'transition-all duration-500 hover:scale-105 active:scale-95',
+                  darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                ]">
+                {{ link.text }}
+              </router-link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useAuthStore } from "@/stores/authStore";
+import { useDarkModeStore } from "@/stores/darkMode";
 import { useRouter } from "vue-router";
-import { success, error } from "toastr";
 
 const authStore = useAuthStore();
+const darkModeStore = useDarkModeStore();
 const router = useRouter();
-const errorMessage = ref("");
-const loadingBtn = ref(false);
- 
 
-onMounted(() => {
-  if (authStore.user || authStore.user?.role === "admin") {
-    router.push("/dashboard");
-  }
-});
+// Theme
+const darkMode = computed(() => darkModeStore.darkMode);
+const toggleTheme = () => darkModeStore.toggleDarkMode();
 
+// Form state
 const form = ref({
   email: "",
   password: "",
+  remember: false,
 });
 
 const errors = ref({
@@ -26,130 +443,307 @@ const errors = ref({
   password: [],
 });
 
-// Validate a single field
-const validateField = (field) => {
-  if (!form.value[field]) {
-    errors.value[field] = [`The ${field.replace("_", " ")} field is required.`];
-  }
-  else if (field === "email" && !validateEmail(form.value[field])) {
-    errors.value[field] = [`The ${field.replace("_", " ")} field is invalid.`];
-  }
-   else {
-    errors.value[field] = []; // Clear errors if field is valid
-  }
-};
+const loadingBtn = ref(false);
+const errorMessage = ref("");
+const successMessage = ref("");
+const showPassword = ref(false);
 
+// Features list
+const features = [
+  {
+    icon: "fas fa-rocket",
+    title: "Rapid Devel opment",
+    description: "Build applications in days, not months with our powerful platform"
+  },
+  {
+    icon: "fas fa-shield-alt",
+    title: "Enterprise Security",
+    description: "Bank-level security with encrypted data and secure authentication"
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Scalable Infrastructure",
+    description: "Grow your applications seamlessly with our cloud infrastructure"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "Customizable Solutions",
+    description: "Tailor applications to your exact business needs"
+  }
+];
+
+// Social providers
+const socialProviders = [
+  {
+    name: "Google",
+    icon: "fab fa-google",
+    color: "text-red-500"
+  },
+  {
+    name: "GitHub",
+    icon: "fab fa-github",
+    color: darkMode.value ? "text-white" : "text-gray-800"
+  }
+];
+
+// Footer links
+const footerLinks = [
+  { text: "Terms of Service", to: "/terms" },
+  { text: "and", to: "#", class: "text-gray-500 hover:text-gray-500 cursor-default" },
+  { text: "Privacy Policy", to: "/privacy" }
+];
+
+// Password strength
+const passwordStrength = computed(() => {
+  const password = form.value.password;
+  if (!password) return 0;
+  
+  let strength = 0;
+  
+  if (password.length >= 8) strength += 25;
+  if (password.length >= 12) strength += 15;
+  if (/[A-Z]/.test(password)) strength += 20;
+  if (/[a-z]/.test(password)) strength += 20;
+  if (/[0-9]/.test(password)) strength += 20;
+  if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+  
+  return Math.min(strength, 100);
+});
+
+const passwordStrengthText = computed(() => {
+  const strength = passwordStrength.value;
+  if (strength < 40) return "Weak";
+  if (strength < 70) return "Fair";
+  if (strength < 90) return "Good";
+  return "Strong";
+});
+
+const passwordStrengthClass = computed(() => {
+  const strength = passwordStrength.value;
+  if (strength < 40) return darkMode.value ? "text-red-400" : "text-red-600";
+  if (strength < 70) return darkMode.value ? "text-yellow-400" : "text-yellow-600";
+  if (strength < 90) return darkMode.value ? "text-blue-400" : "text-blue-600";
+  return darkMode.value ? "text-green-400" : "text-green-600";
+});
+
+const passwordStrengthBarClass = computed(() => {
+  const strength = passwordStrength.value;
+  if (strength < 40) return "bg-red-500";
+  if (strength < 70) return "bg-yellow-500";
+  if (strength < 90) return "bg-blue-500";
+  return "bg-green-500";
+});
+
+// Validation
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
-}
- 
-// Validate the entire form
-const validateForm = () => {
-  Object.keys(form.value).forEach((field) => validateField(field));
-  return Object.values(errors.value).every(
-    (errorArray) => errorArray.length === 0
-  );
 };
 
+const validateField = (field) => {
+  const value = form.value[field];
+  errors.value[field] = [];
+
+  if (!value) {
+    errors.value[field] = [`${field.charAt(0).toUpperCase() + field.slice(1)} is required`];
+    return false;
+  }
+
+  if (field === "email") {
+    if (!validateEmail(value)) {
+      errors.value.email = ["Please enter a valid email address"];
+      return false;
+    }
+  }
+
+  if (field === "password") {
+    if (value.length < 6) {
+      errors.value.password = ["Password must be at least 6 characters"];
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const clearFieldError = (field) => {
+  if (errors.value[field].length) {
+    errors.value[field] = [];
+  }
+};
+
+const validateForm = () => {
+  let isValid = true;
+  if (!validateField("email")) isValid = false;
+  if (!validateField("password")) isValid = false;
+  return isValid;
+};
+
+// Social login
+const socialLogin = (provider) => {
+  console.log(`Social login with ${provider}`);
+  // Implement OAuth here
+};
+
+// Form submission
 const handleSubmit = async () => {
-  if (!validateForm()) return;  
+  if (!validateForm()) {
+    errorMessage.value = "Please fix the errors in the form";
+    return;
+  }
 
   try {
     loadingBtn.value = true;
-    await authStore.login(form.value);
-    success("Login successful!");
-    router.push("/dashboard");
-  } catch (err) {
-    loadingBtn.value = false;
-    if (err.response && err.response.status === 422) {
-      errors.value = err.response.data.errors;
-    } else {
-      error("An error occurred!");
-      errorMessage.value = "An error occurred!";
-      console.log("An error occurred:", err);
-    }
-  } finally {
-    setTimeout(() => (loadingBtn.value = false), 300);
-  }
-};
+    errorMessage.value = "";
+    successMessage.value = "";
 
-onMounted(() => {
-  if (authStore.user && authStore.user.role === "admin") {
-    router.push("/dashboard");
+    const result = await authStore.login(form.value);
+
+    // if login failed
+    if (!result.success) {
+      errorMessage.value = result.error || "Invalid email or password.";
+      return;
+    }
+
+    // ✅ success
+    form.value = { email: "", password: "", remember: false };
+    successMessage.value = "Login successful! Redirecting...";
+
+    setTimeout(() => {
+      router.push("/dashboard");
+    }, 1000);
+
+  } finally {
+    loadingBtn.value = false;
   }
-});
+
+}; 
 </script>
 
-<template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
-      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
-        Login
-      </h2>
-
-      <form @submit.prevent="handleSubmit" class="py-2">
-        <!-- Email Field -->
-        <div class="pb-4">
-          <label class="block text-gray-600 font-medium pb-1">Email</label>
-          <input
-            type="email"
-            v-model="form.email"
-            placeholder="Enter your email"
-            class="form-control "
-             :class="{ 'is-invalid':  errors.email.length }"
-            @keyup="validateField('email')"
-          />
-          <p v-if="errors.email.length" class="text-red-500 text-sm mt-1">
-            {{ errors.email[0] }}
-          </p>
-        </div>
-
-        <!-- Password Field -->
-        <div class="pb-4">
-          <label class="block text-gray-600 font-medium pb-1">Password</label>
-          <input
-            type="password"
-            v-model="form.password"
-            placeholder="Enter your password"
-            class="form-control "
-             :class="{ 'is-invalid':  errors.password.length }"
-            @keyup="validateField('password')"
-          />
-          <p v-if="errors.password.length" class="text-red-500 text-sm mt-1">
-            {{ errors.password[0] }}
-          </p>
-        </div>
-
-        <!-- Login Button -->
-        <button
-          type="submit"
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
-          :disabled="loadingBtn"
-        >
-          <span
-            v-if="loadingBtn"
-            class="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5 mr-2"
-          ></span>
-          <span>{{ loadingBtn ? "Logging in..." : "Login" }}</span>
-        </button>
-
-        <!-- Error Message -->
-        <p v-if="errorMessage" class="text-red-500 text-center mt-2">
-          {{ errorMessage }}
-        </p>
-      </form>
-    </div>
-  </div>
-</template>
-
 <style scoped>
-.invalid-feedback {
-  color: red;
-  font-size: 0.875em;
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.is-invalid {
-  border-color: red;
-  background-color: rgba(255, 214, 214, 0.2);
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glass effect enhancements */
+.backdrop-blur-lg {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+}
+
+/* Responsive improvements */
+@media (max-width: 1024px) {
+  .lg\:w-1\/2 {
+    width: 100%;
+  }
+  
+  .min-h-screen {
+    min-height: auto;
+  }
+}
+
+/* Focus styles */
+:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
 }
 </style>

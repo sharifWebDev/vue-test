@@ -1,19 +1,45 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import productRoutes from '@/modules/products/productRoutes';
-import { useAuthStore } from '@/stores/authStore';
-import Login from '@/pages/Login.vue';
-import Dashboard from '@/modules/dashboard/Dashboard.vue';
-import ItemRoutes from '@/modules/products/ItemRoutes';
+import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "@/stores/authStore";
+
+// Layouts
+import DashboardLayout from "@/layouts/DashboardLayout.vue";
+import WebsiteLayout from "@/layouts/WebsiteLayout.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
+
+// Modules
+import SizeTypeRoutes from "@/pages/admin/sizeType/SizeTypeRoutes";
 
 const routes = [
-  { path: '/', redirect: '/login' },
-  { path: '/login', component: Login },
   {
-    path: '/dashboard',
-    component: Dashboard,
+    path: "/",
+    component: () => import("@/pages/Home.vue"),
+    meta: { layoutComponent: WebsiteLayout, title: "Home" },
   },
-  ...productRoutes,
-  ...ItemRoutes,
+  {
+    path: "/login",
+    component: () => import("@/pages/Login.vue"),
+    meta: { layoutComponent: AuthLayout, title: "Login", guestOnly: true },
+  },
+  {
+    path: "/dashboard",
+    meta: {
+      layoutComponent: DashboardLayout,
+      requiresAuth: true,
+    },
+    children: [
+      {
+        path: "",
+        name: "Dashboard",
+        component: () => import("@/pages/admin/dashboard/Dashboard.vue"),
+        meta: { title: "Dashboard Overview" },
+      },
+      ...SizeTypeRoutes, // Spread directly; handle meta inside the module file
+    ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => import("@/pages/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({
@@ -21,14 +47,23 @@ const router = createRouter({
   routes,
 });
 
-// Navigation Guard
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  if (to.meta.requiresAuth && !authStore.token) {
-    next('/login');
-  } else {
-    next();
-  }
+
+  // 1. Set Title
+  document.title = `${to.meta.title || "App"} | AppBuilder Pro`;
+
+  // 2. Security Checks
+  const isAuthenticated = authStore.isAuthenticated;
+
+  // Use .matched.some to ensure nested routes inherit security
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isGuestOnly = to.matched.some((record) => record.meta.guestOnly);
+
+  if (requiresAuth && !isAuthenticated) return next("/login");
+  if (isGuestOnly && isAuthenticated) return next("/dashboard");
+
+  next();
 });
 
 export default router;

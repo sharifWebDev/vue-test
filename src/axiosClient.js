@@ -18,8 +18,9 @@ axiosClient.interceptors.request.use(
   (config) => {
     const authStore = useAuthStore();
     if (authStore.token) {
-      config.headers.Authorization = `Bearer ${authStore.token}`;  // Attach the token to the header
+      config.headers.Authorization = `Bearer ${authStore.token}`;
     }
+    config.headers.Accept = 'application/json';
     return config;
   },
   (error) => Promise.reject(error)

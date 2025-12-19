@@ -4,7 +4,6 @@ import {
   addProductAPI,
   updateProductAPI,
   deleteProductAPI,
-  fetchCategoriesAPI,
 } from "@/services/productService";
 
 export const useProductStore = defineStore("productStore", {
@@ -69,15 +68,7 @@ export const useProductStore = defineStore("productStore", {
         this.loading = false;
       }
     },
-
-    async fetchCategories() {
-      try {
-        const response = await fetchCategoriesAPI();
-        this.categories = response.data || [];
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    },
+ 
 
     async addProduct(product) {
       await addProductAPI(product);

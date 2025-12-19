@@ -1,5 +1,4 @@
 <script setup>
-import Spinner from "../core/preSubLoader.vue";
 </script>
 
 <template>
