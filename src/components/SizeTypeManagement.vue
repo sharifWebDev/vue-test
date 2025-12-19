@@ -438,7 +438,7 @@
     </BaseModal>
 
     <!-- Delete Confirmation Modal -->
-    <BaseModal :show="showDeleteModal" title="Delete Size Type" maxWidth="xl" :showClose="false"
+    <BaseModal :show="showDeleteModal" title="Delete Size Type" maxWidth="lg" :showClose="false"
       @close="closeDeleteModal">
       <div class="px-6 py-3">
         <div class="text-center">
