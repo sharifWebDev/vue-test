@@ -41,7 +41,7 @@
       </div> 
 
       <!-- Navigation -->
-      <nav class="p-3 flex-1 overflow-y-scroll no-scrollbar max-h-[100vh-6.5rem]">
+      <nav class="p-3 flex-1 overflow-y-scroll no-scrollbar min-h-[calc(100vh-7rem)] max-h-[100vh-7rem]">
         <ul class="space-y-1">
           <li v-for="item in navigationItems" :key="item.id">
             <router-link 
@@ -66,31 +66,9 @@
         </ul>
       </nav>
 
-         <!-- User Info -->
-      <div class="p-4 border-gray-200 dark:border-gray-700 mt-5">
-        <div class="flex items-center space-x-3">
-          <div class="user-avatar w-10 h-10 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center">
-            <span class="text-gray-600 dark:text-gray-400 text-sm font-medium">
-              {{ props.user.initials || 'JD' }}
-            </span>
-          </div>
-          <div 
-            v-if="!isCollapsed || windowWidth < 768"
-            class="user-info flex-1 min-w-0"
-          >
-            <p class="text-sm font-medium text-gray-800 dark:text-white truncate">
-              {{ props.user.name || 'John Doe' }}
-            </p>
-            <p class="text-xs text-gray-600 dark:text-gray-400 truncate">
-              {{ props.user.role || 'User' }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      
+     
       <!-- Footer -->
-      <div class="absolute bottom-0 w-full p-1 border-t border-gray-200 dark:border-gray-700">
+      <div class="absolute bottom-0 w-full p-1 border-gray-200 dark:border-gray-700">
         <button 
           @click="toggleDarkMode"
           :class="[

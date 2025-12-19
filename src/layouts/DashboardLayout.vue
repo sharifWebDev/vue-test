@@ -80,7 +80,7 @@ onMounted(async () => {
   // Simulate loading delay
   setTimeout(() => {
     isLoading.value = false;
-  }, 1000);
+  }, 500);
 
   // Handle window resize
   window.addEventListener("resize", handleResize);

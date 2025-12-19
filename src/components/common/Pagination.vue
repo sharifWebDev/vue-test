@@ -33,10 +33,10 @@
                     @click="goToPage(1)"
                     :disabled="currentPage === 1"
                     :class="[
-                        'px-2 py-1.5 rounded-lg text-sm font-medium transition-all',
+                        'px-2 py-1.5 bg-gray-200 rounded-lg text-sm font-medium transition-all',
                         currentPage === 1 ? 
                             'text-gray-400 cursor-not-allowed' : 
-                            'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
+                            'text-gray-700 hover:bg-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
                     ]"
                     title="First Page"
                 >
@@ -46,10 +46,10 @@
                     @click="goToPage(currentPage - 1)"
                     :disabled="currentPage === 1"
                     :class="[
-                        'px-2 py-1.5 rounded-lg text-sm font-medium transition-all',
+                        'px-2 py-1.5 bg-gray-200 rounded-lg text-sm font-medium transition-all',
                         currentPage === 1 ? 
                             'text-gray-400 cursor-not-allowed' : 
-                            'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
+                            'text-gray-700 hover:bg-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
                     ]"
                     title="Previous Page"
                 >
@@ -82,10 +82,10 @@
                     @click="goToPage(currentPage + 1)"
                     :disabled="currentPage === lastPage"
                     :class="[
-                        'px-2 py-1.5 rounded-lg text-sm font-medium transition-all',
+                        'px-2 bg-gray-200 py-1.5 rounded-lg text-sm font-medium transition-all',
                         currentPage === lastPage ? 
                             'text-gray-400 cursor-not-allowed' : 
-                            'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
+                            'text-gray-700 hover:bg-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
                     ]"
                     title="Next Page"
                 >
@@ -95,10 +95,10 @@
                     @click="goToPage(lastPage)"
                     :disabled="currentPage === lastPage"
                     :class="[
-                        'px-2 py-1.5 rounded-lg text-sm font-medium transition-all',
+                        'px-2 bg-gray-200 py-1.5 rounded-lg text-sm font-medium transition-all',
                         currentPage === lastPage ? 
                             'text-gray-400 cursor-not-allowed' : 
-                            'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
+                            'text-gray-700 hover:bg-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 hover:shadow-sm'
                     ]"
                     title="Last Page"
                 >
