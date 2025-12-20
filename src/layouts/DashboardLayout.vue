@@ -27,13 +27,19 @@
           :successMessage="''" @clearErrors="clearErrors" @clearSuccess="clearSuccess" />
       </div>
 
-      <main class="content p-5 overflow-y-auto no-scrollbar flex-1 min-h-[calc(100vh-9rem)] max-h-[100vh]">
-        <!-- CRITICAL: Add key to router-view -->
-        <router-view v-slot="{ Component, route }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" :key="route.fullPath" />
-          </transition>
-        </router-view>
+      <main class="content p-5 overflow-y-auto no-scrollbar flex-1 min-h-[calc(100vh-9rem)] max-h-[100vh-9rem]">
+        <transition name="fade" mode="out-in">
+          <!-- <keep-alive> -->
+            <Suspense>
+              <template #default>
+                <router-view />
+              </template>
+              <template #fallback>
+                <PreLoader />
+              </template>
+            </Suspense>
+          <!-- </keep-alive> -->
+        </transition>
       </main>
 
       <!-- Dashboard Footer -->

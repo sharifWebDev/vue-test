@@ -2,43 +2,76 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/authStore";
 
 // Layouts
-import DashboardLayout from "@/layouts/DashboardLayout.vue";
 import WebsiteLayout from "@/layouts/WebsiteLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
-
-// Modules
-import SizeTypeRoutes from "@/pages/admin/sizeType/SizeTypeRoutes";
+import DashboardLayout from "@/layouts/DashboardLayout.vue";
 
 const routes = [
+  /* ================= Website (Customer Landing) ================= */
   {
     path: "/",
-    component: () => import("@/pages/Home.vue"),
-    meta: { layoutComponent: WebsiteLayout, title: "Home" },
+    component: WebsiteLayout,
+    children: [
+      {
+        path: "",
+        name: "Home",
+        component: () => import("@/pages/Home.vue"),
+        meta: { title: "Home" },
+      },
+    ],
   },
+
+  /* ================= Auth ================= */
   {
-    path: "/login",
-    component: () => import("@/pages/Login.vue"),
-    meta: { layoutComponent: AuthLayout, title: "Login", guestOnly: true },
+    path: "/",
+    component: AuthLayout,
+    children: [
+      {
+        path: "login",
+        name: "Login",
+        component: () => import("@/pages/Login.vue"),
+        meta: {
+          title: "Login",
+          guestOnly: true,
+        },
+      },
+    ],
   },
+
+  /* ================= Admin Dashboard ================= */
   {
     path: "/dashboard",
-    meta: {
-      layoutComponent: DashboardLayout,
-      requiresAuth: true,
-    },
+    component: DashboardLayout,
+    meta: { requiresAuth: true },
     children: [
       {
         path: "",
         name: "Dashboard",
-        component: () => import("@/pages/admin/dashboard/Dashboard.vue"),
-        meta: { title: "Dashboard Overview" },
+        component: () =>
+          import("@/pages/admin/dashboard/Dashboard.vue"),
+        meta: { title: "Dashboard" },
       },
-      ...SizeTypeRoutes, // Spread directly; handle meta inside the module file
+      {
+        path: "hk-prod-size-types",
+        name: "SizeTypes",
+        component: () =>
+          import("@/pages/admin/sizeType/SizeTypeManagement.vue"),
+        meta: { title: "Size Types" },
+      },
     ],
   },
+
+  /* ================= 404 ================= */
   {
     path: "/:pathMatch(.*)*",
-    component: () => import("@/pages/NotFound.vue"),
+    component: WebsiteLayout,
+    children: [
+      {
+        path: "",
+        component: () => import("@/pages/NotFound.vue"),
+        meta: { title: "404" },
+      },
+    ],
   },
 ];
 
@@ -47,21 +80,21 @@ const router = createRouter({
   routes,
 });
 
+/* ================= Guards ================= */
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
 
-  // 1. Set Title
   document.title = `${to.meta.title || "App"} | AppBuilder Pro`;
 
-  // 2. Security Checks
-  const isAuthenticated = authStore.isAuthenticated;
+  const isAuth = authStore.isAuthenticated;
 
-  // Use .matched.some to ensure nested routes inherit security
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-  const isGuestOnly = to.matched.some((record) => record.meta.guestOnly);
+  if (to.matched.some(r => r.meta.requiresAuth) && !isAuth) {
+    return next("/login");
+  }
 
-  if (requiresAuth && !isAuthenticated) return next("/login");
-  if (isGuestOnly && isAuthenticated) return next("/dashboard");
+  if (to.matched.some(r => r.meta.guestOnly) && isAuth) {
+    return next("/dashboard");
+  }
 
   next();
 });

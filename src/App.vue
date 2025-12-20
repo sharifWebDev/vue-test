@@ -1,22 +1,12 @@
 <script setup>
-import { computed, markRaw } from 'vue'
-import { useRoute } from 'vue-router'
-import WebsiteLayout from '@/layouts/WebsiteLayout.vue'
+import { useRoute } from "vue-router";
 
-const route = useRoute() 
-const layout = computed(() => {
-  return route.meta.layoutComponent || markRaw(WebsiteLayout)
-})
+const route = useRoute();
+
 </script>
 
 <template>
-  <component :is="layout">
-    <router-view v-slot="{ Component, route }">
-      <transition name="fade" mode="out-in"> 
-        <component :is="Component" :key="route.fullPath" />
-      </transition>
-    </router-view>
-  </component>
+  <router-view />  
 </template>
 
 <style>
@@ -24,7 +14,6 @@ const layout = computed(() => {
 .fade-leave-active {
   transition: opacity 0.2s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

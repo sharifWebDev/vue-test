@@ -169,7 +169,7 @@ const darkModeText = computed(() => {
 });
 
 const isActive = (routePath) => {
-  return route.path === routePath || route.path.startsWith(routePath);
+  return route.path === routePath || route.path.startsWith(routePath + "/");
 };
 
 const toggleCollapse = () => {
