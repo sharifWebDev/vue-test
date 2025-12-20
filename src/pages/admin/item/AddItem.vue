@@ -209,7 +209,7 @@
  
             <button 
               @click="handleSubmit" 
-              class="btn btn-primary btn-sm me-2" type="submit"
+class="btn btn-gray btn-sm me-2" type="submit"
               :disabled="loadingBtn"
               >
               <span v-if="loadingBtn">

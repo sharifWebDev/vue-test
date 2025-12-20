@@ -54,9 +54,9 @@ import { useAuthStore } from "@/stores/authStore";
 import { useSidebarStore } from "@/stores/sidebar";
 import { useRouter } from "vue-router";
 import PreLoader from "@/components/core/PreLoader.vue";
-import Sidebar from "@/components/Dashboard/Sidebar.vue";
-import Header from "@/components/Dashboard/Header.vue";
-import Footer from "@/components/Dashboard/Footer.vue";
+import Sidebar from "@/layouts/Dashboard/Sidebar.vue";
+import Header from "@/layouts/Dashboard/Header.vue";
+import Footer from "@/layouts/Dashboard/Footer.vue";
 import AlertMessages from "@/components/core/AlertMessages.vue"; 
 
 const authStore = useAuthStore();

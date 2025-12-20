@@ -25,7 +25,7 @@
         <div class="flex justify-between items-center">
           <h3 class="font-semibold text-gray-800 dark:text-white">Notifications</h3>
           <div class="flex items-center space-x-2">
-            <button @click="markAllAsRead" class="text-xs text-primary-600 dark:text-primary-400 hover:underline">
+            <button @click="markAllAsRead" class="text-xs text-gray-600 dark:text-gray-400 hover:underline">
               Mark all as read
             </button>
             <button @click="openSettings" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
@@ -55,7 +55,7 @@
               <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{{ notification.message }}</p>
               <div class="flex items-center justify-between mt-2">
                 <span class="text-xs text-gray-500 dark:text-gray-400">{{ notification.time }}</span>
-                <span v-if="notification.unread" class="text-xs px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 rounded-full">
+                <span v-if="notification.unread" class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 rounded-full">
                   New
                 </span>
               </div>
@@ -76,7 +76,7 @@
       
       <!-- Notification Footer -->
       <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-        <router-link to="/notifications" class="block text-center text-sm text-primary-600 dark:text-primary-400 hover:underline">
+        <router-link to="/notifications" class="block text-center text-sm text-gray-600 dark:text-gray-400 hover:underline">
           View all notifications
         </router-link>
       </div>

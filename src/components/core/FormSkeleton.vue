@@ -15,7 +15,7 @@ const rows = 6;
     >
       <div v-for="col in columns" :key="col">
         <div
-          class="h-2.5 bg-gray-600 rounded-full dark:bg-gray-600 w-24 mb-2"
+ class="h-2.5 bg-gray-600 rounded-full dark:bg-gray-600 w-24 mb-2"
         ></div>
         <div class="w-54 h-5 bg-gray-900 rounded dark:bg-gray-500"></div>
       </div>

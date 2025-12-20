@@ -15,8 +15,8 @@
           <p class="text-xs font-medium text-gray-600 dark:text-gray-400">Active Applications</p>
           <h3 class="text-xl font-bold text-gray-800 dark:text-white mt-1">12</h3>
         </div>
-        <div class="p-2.5 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-          <i class="fas fa-layer-group text-blue-600 dark:text-blue-400 text-lg"></i>
+        <div class="p-2.5 bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+          <i class="fas fa-layer-group text-gray-600 dark:text-gray-400 text-lg"></i>
         </div>
       </div>
       <div class="mt-4">
@@ -92,7 +92,7 @@
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-5 border border-gray-200 dark:border-gray-700">
         <div class="flex justify-between items-center mb-5">
           <h2 class="font-semibold text-gray-800 dark:text-white">Recent Activity</h2>
-          <a href="#" class="text-xs text-primary-600 dark:text-primary-400 hover:underline">View All</a>
+          <a href="#" class="text-xs text-gray-600 dark:text-gray-400 hover:underline">View All</a>
         </div>
 
         <div class="space-y-4">
@@ -108,8 +108,8 @@
           </div>
 
           <div class="flex items-start space-x-3">
-            <div class="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg mt-0.5">
-              <i class="fas fa-upload text-blue-600 dark:text-blue-400 text-sm"></i>
+            <div class="p-2 bg-gray-50 dark:bg-gray-900/30 rounded-lg mt-0.5">
+              <i class="fas fa-upload text-gray-600 dark:text-gray-400 text-sm"></i>
             </div>
             <div class="flex-1">
               <p class="text-gray-800 dark:text-white text-sm">You imported a new database schema</p>
@@ -148,8 +148,8 @@
         <div class="space-y-3">
           <a href="#builder"
             class="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-            <div class="p-2 bg-primary-50 dark:bg-primary-900/30 rounded-lg">
-              <i class="fas fa-plus text-primary-600 dark:text-primary-400 text-sm"></i>
+            <div class="p-2 bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+              <i class="fas fa-plus text-gray-600 dark:text-gray-400 text-sm"></i>
             </div>
             <span class="text-gray-700 dark:text-gray-300 text-sm">Create New App</span>
           </a>
@@ -164,8 +164,8 @@
 
           <a href="#billing"
             class="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-            <div class="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-              <i class="fas fa-file-invoice text-blue-600 dark:text-blue-400 text-sm"></i>
+            <div class="p-2 bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+              <i class="fas fa-file-invoice text-gray-600 dark:text-gray-400 text-sm"></i>
             </div>
             <span class="text-gray-700 dark:text-gray-300 text-sm">View Invoices</span>
           </a>

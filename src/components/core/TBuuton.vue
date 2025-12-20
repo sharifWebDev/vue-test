@@ -79,9 +79,9 @@
       case "green":
         classes.value = [
           ...classes.value,
-          "bg-emerald-500",
-          "hover:bg-emerald-600",
-          "focus:ring-emerald-400",
+          "bg-gray-500",
+          "hover:bg-gray-600",
+          "focus:ring-gray-400",
         ];
         break;
     }

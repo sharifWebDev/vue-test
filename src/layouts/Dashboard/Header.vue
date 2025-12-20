@@ -78,7 +78,7 @@
                 <div class="flex items-center space-x-2">
                   <button 
                     @click="markAllAsRead"
-                    class="text-xs text-primary-600 dark:text-primary-400 hover:underline"
+                    class="text-xs text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Mark all as read
                   </button>
@@ -120,7 +120,7 @@
                       </span>
                       <span 
                         v-if="notification.unread"
-                        class="text-xs px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 rounded-full"
+                        class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 rounded-full"
                       >
                         New
                       </span>
@@ -148,7 +148,7 @@
             
             <!-- Notification Footer -->
             <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-              <a href="#all-notifications" class="block text-center text-sm text-primary-600 dark:text-primary-400 hover:underline">
+              <a href="#all-notifications" class="block text-center text-sm text-gray-600 dark:text-gray-400 hover:underline">
                 View all notifications
               </a>
             </div>
@@ -161,8 +161,8 @@
             @click="toggleUserDropdown"
             class="flex items-center space-x-2 p-1.5 rounded-lg bg-gray-100 dark:bg-gray-700"
           >
-            <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
-              <span class="text-primary-600 dark:text-primary-400 text-xs font-medium">{{ props.user.initials || 'JD' }}</span>
+            <div class="w-8 h-8 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center">
+              <span class="text-gray-600 dark:text-gray-400 text-xs font-medium">{{ props.user.initials || 'JD' }}</span>
             </div>
             <span class="text-gray-700 dark:text-gray-300 hidden md:block text-sm">{{ props.user.name || 'User' }}</span>
             <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 text-xs"></i>

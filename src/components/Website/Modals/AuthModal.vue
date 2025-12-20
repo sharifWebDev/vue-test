@@ -8,21 +8,25 @@
     }"
     @click="closeModal"
   >
-    <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 w-full max-w-md shadow-2xl relative overflow-hidden transform transition-all duration-300">
+    <div
+      class="bg-white dark:bg-gray-800 rounded-3xl p-8 w-full max-w-md shadow-2xl relative overflow-hidden transform transition-all duration-300">
       <!-- Gradient Top Border -->
-      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-500 via-purple-500 to-pink-500"></div>
       
       <!-- Animated Background Elements -->
-      <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-200 dark:bg-blue-900 rounded-full opacity-20 animate-pulse"></div>
+      <div
+        class="absolute -top-20 -right-20 w-40 h-40 bg-gray-200 dark:bg-gray-900 rounded-full opacity-20 animate-pulse">
+      </div>
       <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-200 dark:bg-purple-900 rounded-full opacity-20 animate-pulse"></div>
       
       <div class="relative z-10">
         <!-- Header -->
         <div class="text-center mb-8">
-          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div
+            class="w-16 h-16 bg-gradient-to-r from-gray-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
             <i class="fas fa-cube text-white text-2xl"></i>
           </div>
-          <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 class="text-3xl font-bold bg-gradient-to-r from-gray-600 to-purple-600 bg-clip-text text-transparent">
             Welcome Back
           </h2>
           <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm">Sign in to your AppBuilder Pro account</p>
@@ -34,8 +38,8 @@
             @click="activeTab = 'login'"
             class="tab-button flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center"
             :class="{
-              'bg-white dark:bg-gray-800 text-blue-600 shadow-sm': activeTab === 'login',
-              'text-gray-600 dark:text-gray-400': activeTab !== 'login'
+  'bg-white dark:bg-gray-800 text-gray-600 shadow-sm': activeTab === 'login',
+  'text-gray-600 dark:text-gray-400': activeTab !== 'login'
             }"
           >
             <i class="fas fa-sign-in-alt mr-2 text-sm"></i>
@@ -45,8 +49,8 @@
             @click="activeTab = 'register'"
             class="tab-button flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center"
             :class="{
-              'bg-white dark:bg-gray-800 text-blue-600 shadow-sm': activeTab === 'register',
-              'text-gray-600 dark:text-gray-400': activeTab !== 'register'
+  'bg-white dark:bg-gray-800 text-gray-600 shadow-sm': activeTab === 'register',
+  'text-gray-600 dark:text-gray-400': activeTab !== 'register'
             }"
           >
             <i class="fas fa-user-plus mr-2 text-sm"></i>
@@ -66,11 +70,11 @@
               <input 
                 v-model="loginForm.email"
                 type="email" 
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11"
                 placeholder="your@email.com" 
                 required
               >
-              <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
+              class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
             </div>
           </div>
           
@@ -80,7 +84,7 @@
               <input 
                 v-model="loginForm.password"
                 :type="showLoginPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11"
                 placeholder="••••••••" 
                 required
               >
@@ -97,13 +101,14 @@
           
           <div class="flex items-center justify-between text-sm">
             <label class="flex items-center space-x-2 cursor-pointer">
-              <input v-model="loginForm.remember" type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+              <input v-model="loginForm.remember" type="checkbox"
+                class="w-4 h-4 text-gray-600 rounded focus:ring-gray-500">
               <span class="text-gray-700 dark:text-gray-300">Remember me</span>
             </label>
             <button 
               type="button" 
               @click="showForgotPassword = true"
-              class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors font-medium"
+              class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors font-medium"
             >
               Forgot password?
             </button>
@@ -112,7 +117,7 @@
           <button 
             type="submit" 
             :disabled="loading"
-            class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3.5 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full bg-gradient-to-r from-gray-500 to-purple-600 text-white py-3.5 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             :class="{ 'hover:scale-[1.02] active:scale-[0.98]': !loading }"
           >
             <i class="fas fa-sign-in-alt mr-2"></i>
@@ -132,7 +137,7 @@
               <input 
                 v-model="registerForm.name"
                 type="text" 
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11"
                 placeholder="John Doe" 
                 required
               >
@@ -146,11 +151,11 @@
               <input 
                 v-model="registerForm.email"
                 type="email" 
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11"
                 placeholder="your@email.com" 
                 required
               >
-              <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
+              class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
             </div>
           </div>
           
@@ -160,7 +165,7 @@
               <input 
                 v-model="registerForm.password"
                 :type="showRegisterPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11"
                 placeholder="••••••••" 
                 required
               >
@@ -181,7 +186,7 @@
               <input 
                 v-model="registerForm.confirmPassword"
                 :type="showConfirmPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11" 
+                class="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:text-white transition-all duration-300 pl-11 pr-11"
                 placeholder="••••••••" 
                 required
               >
@@ -197,16 +202,21 @@
           </div>
           
           <label class="flex items-start space-x-3 text-sm cursor-pointer">
-            <input v-model="registerForm.terms" type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-0.5">
+            <input v-model="registerForm.terms" type="checkbox"
+              class="w-4 h-4 text-gray-600 rounded focus:ring-gray-500 mt-0.5">
             <span class="text-gray-700 dark:text-gray-300">
-              I agree to the <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">Terms of Service</a> and <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">Privacy Policy</a>
+              I agree to the <a href="#"
+                class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 font-medium">Terms
+                of Service</a> and <a href="#"
+                class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 font-medium">Privacy
+                Policy</a>
             </span>
           </label>
           
           <button 
             type="submit" 
             :disabled="loading"
-            class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3.5 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full bg-gradient-to-r from-gray-500 to-purple-600 text-white py-3.5 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             :class="{ 'hover:scale-[1.02] active:scale-[0.98]': !loading }"
           >
             <i class="fas fa-user-plus mr-2"></i>

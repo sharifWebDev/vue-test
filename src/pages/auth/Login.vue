@@ -20,9 +20,9 @@
 
         <!-- Floating Shapes -->
         <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-20 animate-pulse"
-             :class="darkMode ? 'bg-purple-500/20' : 'bg-primary-300/30'"></div>
+             :class="darkMode ? 'bg-purple-500/20' : 'bg-gray-300/30'"></div>
         <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-10 animate-pulse delay-1000"
-             :class="darkMode ? 'bg-blue-500/20' : 'bg-primary-400/20'"></div>
+             :class="darkMode ? 'bg-gray-500/20' : 'bg-gray-400/20'"></div>
 
         <!-- Content Container -->
         <div class="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
@@ -33,15 +33,15 @@
                 'w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 border border',
                 darkMode ? 'bg-white/10 backdrop-blur-lg' : 'bg-white backdrop-blur-sm'
               ]">
-                <i class="fas fa-cube text-xl" :class="darkMode ? 'text-primary-300' : 'text-primary-600'"></i>
+                <i class="fas fa-cube text-xl" :class="darkMode ? 'text-gray-300' : 'text-gray-600'"></i>
               </div>
               <div>
                 <h2 class="text-2xl font-bold transition-colors duration-500" 
                     :class="darkMode ? 'text-white' : 'text-gray-800'">
-                  AppBuilder<span :class="darkMode ? 'text-primary-300' : 'text-primary-600'">Pro</span>
+                  AppBuilder<span :class="darkMode ? 'text-gray-300' : 'text-gray-600'">Pro</span>
                 </h2>
                 <p class="text-sm transition-colors duration-500"
-                   :class="darkMode ? 'text-primary-200' : 'text-primary-500'">
+                   :class="darkMode ? 'text-gray-200' : 'text-gray-500'">
                   Business Application Platform
                 </p>
               </div>
@@ -58,7 +58,7 @@
             >
               <i :class="[
                 'fas text-lg transition-transform duration-500',
-                darkMode ? 'fa-sun text-yellow-300 rotate-180' : 'fa-moon text-primary-600'
+                darkMode ? 'fa-sun text-yellow-300 rotate-180' : 'fa-moon text-gray-600'
               ]"></i>
             </button>
           </div>
@@ -77,7 +77,7 @@
                    :style="{ animationDelay: `${index * 100}ms` }">
                 <div :class="[
                   'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-500',
-                  darkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-primary-50 hover:bg-primary-100'
+                  darkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-50 hover:bg-gray-100'
                 ]">
                   <i :class="feature.icon" class="text-lg transition-colors duration-500" ></i>
                 </div>
@@ -87,7 +87,7 @@
                     {{ feature.title }}
                   </h3>
                   <p class="text-sm transition-colors duration-500"
-                     :class="darkMode ? 'text-primary-200' : 'text-primary-600'">
+                     :class="darkMode ? 'text-gray-200' : 'text-gray-600'">
                     {{ feature.description }}
                   </p>
                 </div>
@@ -103,16 +103,16 @@
             ]">
               <div class="text-center">
                 <div class="text-2xl font-bold transition-colors duration-500"
-                     :class="darkMode ? 'text-white' : 'text-primary-600'">5,000+</div>
+                     :class="darkMode ? 'text-white' : 'text-gray-600'">5,000+</div>
                 <div class="text-xs transition-colors duration-500"
-                     :class="darkMode ? 'text-primary-300' : 'text-primary-500'">Businesses</div>
+                     :class="darkMode ? 'text-gray-300' : 'text-gray-500'">Businesses</div>
               </div>
-              <div class="w-px h-8" :class="darkMode ? 'bg-white/20' : 'bg-primary-200'"></div>
+              <div class="w-px h-8" :class="darkMode ? 'bg-white/20' : 'bg-gray-200'"></div>
               <div class="text-center">
                 <div class="text-2xl font-bold transition-colors duration-500"
-                     :class="darkMode ? 'text-white' : 'text-primary-600'">98%</div>
+                     :class="darkMode ? 'text-white' : 'text-gray-600'">98%</div>
                 <div class="text-xs transition-colors duration-500"
-                     :class="darkMode ? 'text-primary-300' : 'text-primary-500'">Satisfaction</div>
+                     :class="darkMode ? 'text-gray-300' : 'text-gray-500'">Satisfaction</div>
               </div>
             </div>
           </div>
@@ -131,9 +131,9 @@
             <div class="text-center mb-8">
               <div :class="[
                 'w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500',
-                darkMode ? 'bg-gradient-to-br from-primary-600/20 to-purple-600/20 border border-primary-500/20' : 'bg-gray-50 border border-gray-100'
+                darkMode ? 'bg-gradient-to-br from-gray-600/20 to-purple-600/20 border border-gray-500/20' : 'bg-gray-50 border border-gray-100'
               ]">
-                <i class="fas fa-lock text-2xl" :class="darkMode ? 'text-primary-300' : 'text-primary-600'"></i>
+                <i class="fas fa-lock text-2xl" :class="darkMode ? 'text-gray-300' : 'text-gray-600'"></i>
               </div>
               <h3 class="text-2xl font-bold mb-2 transition-colors duration-500"
                   :class="darkMode ? 'text-white' : 'text-gray-800'">
@@ -191,7 +191,7 @@
                     v-model.trim="form.email"
                     placeholder="you@example.com"
                     :class="[
-                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder:transition-colors',
+                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-gray-500 focus:border-transparent placeholder:transition-colors',
                       darkMode 
                         ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:bg-gray-700'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:bg-white',
@@ -228,7 +228,7 @@
                     @click="showPassword = !showPassword"
                     :class="[
                       'text-sm transition-colors duration-500 flex items-center space-x-1 hover:scale-105 active:scale-95',
-                      darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                      darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-800'
                     ]"
                   >
                     <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
@@ -245,7 +245,7 @@
                     v-model.trim="form.password"
                     placeholder="Enter your password"
                     :class="[
-                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder:transition-colors',
+                      'w-full pl-10 pr-4 py-2 border outline-none rounded-xl transition-all duration-500 focus:ring-2 focus:ring-gray-500 focus:border-transparent placeholder:transition-colors',
                       darkMode 
                         ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:bg-gray-700'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:bg-white',
@@ -298,8 +298,8 @@
                     <div :class="[
                       'w-5 h-5 rounded border transition-colors duration-500 flex items-center justify-center transition-all duration-300',
                       darkMode 
-                        ? form.remember ? 'bg-primary-500 border-primary-500' : 'border-gray-500 hover:border-gray-400'
-                        : form.remember ? 'bg-primary-500 border-primary-500' : 'border-gray-300 hover:border-gray-400'
+                        ? form.remember ? 'bg-gray-500 border-gray-500' : 'border-gray-500 hover:border-gray-400'
+                        : form.remember ? 'bg-gray-500 border-gray-500' : 'border-gray-300 hover:border-gray-400'
                     ]">
                       <i v-if="form.remember" class="fas fa-check text-white text-xs"></i>
                     </div>
@@ -311,7 +311,7 @@
                   to="/forgot-password"
                   :class="[
                     'text-sm transition-colors duration-500 hover:scale-105 active:scale-95 font-medium',
-                    darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                    darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-800'
                   ]"
                 >
                   Forgot password?
@@ -325,7 +325,7 @@
                 :class="[
                   'w-full py-2 rounded-xl font-semibold transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center',
                   darkMode 
-                    ? 'bg-gradient-to-r from-primary-600 to-purple-600 text-white hover:hover:shadow-primary-500/25'
+                    ? 'bg-gradient-to-r from-gray-600 to-purple-600 text-white hover:hover:shadow-gray-500/25'
                     : 'bg-purple-700 text-white hover:bg-purple-800 text-white',
                   !loadingBtn && !disabled ? 'hover:scale-[1.02] active:scale-[0.98]' : ''
                 ]"
@@ -387,7 +387,7 @@
                     to="/register"
                     :class="[
                       'font-semibold transition-all duration-500 hover:scale-105 active:scale-95 ml-1',
-                      darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                      darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-800'
                     ]"
                   >
                     Sign up now
@@ -405,7 +405,7 @@
               <router-link :to="link.to" v-for="link in footerLinks" :key="link.text"
                 :class="[
                   'transition-all duration-500 hover:scale-105 active:scale-95',
-                  darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-600 hover:text-primary-800'
+                  darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-800'
                 ]">
                 {{ link.text }}
               </router-link>
@@ -522,7 +522,7 @@ const passwordStrengthClass = computed(() => {
   const strength = passwordStrength.value;
   if (strength < 40) return darkMode.value ? "text-red-400" : "text-red-600";
   if (strength < 70) return darkMode.value ? "text-yellow-400" : "text-yellow-600";
-  if (strength < 90) return darkMode.value ? "text-blue-400" : "text-blue-600";
+  if (strength < 90) return darkMode.value ? "text-gray-400" : "text-gray-600";
   return darkMode.value ? "text-green-400" : "text-green-600";
 });
 
@@ -530,7 +530,7 @@ const passwordStrengthBarClass = computed(() => {
   const strength = passwordStrength.value;
   if (strength < 40) return "bg-red-500";
   if (strength < 70) return "bg-yellow-500";
-  if (strength < 90) return "bg-blue-500";
+  if (strength < 90) return "bg-gray-500";
   return "bg-green-500";
 });
 

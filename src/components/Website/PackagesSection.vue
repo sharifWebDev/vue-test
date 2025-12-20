@@ -1,182 +1,203 @@
 <template>
-  <div class="slider-container bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
-    <div class="flex items-center justify-between mb-4">
-      <div class="flex space-x-2">
-        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+  <section id="packages"
+    class="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="text-gray-600 font-semibold text-sm uppercase tracking-wider mb-2 block">Pricing Plans</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Choose Your Package</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
+          Select the package that best fits your business needs. All packages include our powerful application builder
+          with different levels of features and support.
+        </p>
       </div>
-      <div class="text-sm font-medium">AppBuilder Dashboard</div>
-      <div class="flex space-x-2">
-        <div class="w-2 h-2 rounded-full bg-white/50"></div>
-        <div class="w-2 h-2 rounded-full bg-white/50"></div>
-        <div class="w-2 h-2 rounded-full bg-white/50"></div>
-      </div>
-    </div>
-    
-    <div class="relative">
-      <button @click="prevSlide" class="slider-nav prev">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      
-      <div class="slider-track gap-3" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-        <!-- Slide 1: User Management -->
-        <div class="slider-slide" :class="{ 'slide-fade': currentSlide === 0 }">
-          <UserManagementSlide />
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Basic Package -->
+        <div
+          class="package-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Basic</h3>
+            <p class="text-gray-500 dark:text-gray-400 mb-4">Perfect for small projects</p>
+            <div class="mt-4">
+              <span class="text-4xl font-bold text-gray-800 dark:text-white">$49</span>
+              <span class="text-gray-500 dark:text-gray-400">/month</span>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li v-for="feature in basicFeatures" :key="feature.text" class="flex items-start">
+              <i :class="feature.iconClass" class="mt-1 mr-3"></i>
+              <span :class="feature.textClass">{{ feature.text }}</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-col space-y-3">
+            <button @click="viewPackageDetails('basic')"
+              class="view-package-btn bg-cyan-600 text-white py-3 rounded-xl hover:bg-cyan-700 transition font-medium flex items-center justify-center gap-2">
+              <span>View Details</span>
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button @click="buyPackage('basic')"
+              class="buy-package-btn border border-cyan-600 text-cyan-600 dark:text-cyan-400 py-3 rounded-xl hover:bg-cyan-50 dark:hover:bg-cyan-700 transition font-medium">
+              Buy Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Standard Package -->
+        <div
+          class="package-card bg-white dark:bg-cyan-800 rounded-2xl shadow-xl p-8 border-2 border-cyan-500 relative transform scale-105">
+          <div
+            class="absolute top-0 right-0 bg-cyan-500 text-white px-5 py-2 rounded-bl-2xl rounded-tr-xl text-sm font-semibold shadow-md">
+            Most Popular</div>
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Standard</h3>
+            <p class="text-gray-500 dark:text-gray-400 mb-4">For growing businesses</p>
+            <div class="mt-4">
+              <span class="text-4xl font-bold text-gray-800 dark:text-white">$99</span>
+              <span class="text-gray-500 dark:text-gray-400">/month</span>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li v-for="feature in standardFeatures" :key="feature.text" class="flex items-start">
+              <i :class="feature.iconClass" class="mt-1 mr-3"></i>
+              <span :class="feature.textClass">{{ feature.text }}</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-col space-y-3">
+            <button @click="viewPackageDetails('standard')"
+              class="view-package-btn bg-cyan-600 text-white py-3 rounded-xl hover:bg-cyan-700 transition font-medium flex items-center justify-center gap-2">
+              <span>View Details</span>
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button @click="buyPackage('standard')"
+              class="buy-package-btn border border-cyan-600 text-cyan-600 dark:text-cyan-400 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition font-medium">
+              Buy Now
+            </button>
+          </div>
         </div>
         
-        <!-- Slide 2: Analytics Dashboard -->
-        <div class="slider-slide" :class="{ 'slide-fade': currentSlide === 1 }">
-          <AnalyticsSlide />
-        </div>
-        
-        <!-- Slide 3: Project Management -->
-        <div class="slider-slide" :class="{ 'slide-fade': currentSlide === 2 }">
-          <ProjectManagementSlide />
+        <!-- Enterprise Package -->
+        <div
+          class="package-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Enterprise</h3>
+            <p class="text-gray-500 dark:text-gray-400 mb-4">For large organizations</p>
+            <div class="mt-4">
+              <span class="text-4xl font-bold text-gray-800 dark:text-white">$199</span>
+              <span class="text-gray-500 dark:text-gray-400">/month</span>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li v-for="feature in enterpriseFeatures" :key="feature.text" class="flex items-start">
+              <i :class="feature.iconClass" class="mt-1 mr-3"></i>
+              <span :class="feature.textClass">{{ feature.text }}</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-col space-y-3">
+            <button @click="viewPackageDetails('enterprise')"
+              class="view-package-btn bg-cyan-600 text-white py-3 rounded-xl hover:bg-cyan-700 transition font-medium flex items-center justify-center gap-2">
+              <span>View Details</span>
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button @click="buyPackage('enterprise')"
+              class="buy-package-btn border border-cyan-600 text-cyan-600 dark:text-cyan-400 py-3 rounded-xl hover:bg-cyan-50 dark:hover:bg-cyan-700 transition font-medium">
+              Buy Now
+            </button>
+          </div>
         </div>
       </div>
-      
-      <button @click="nextSlide" class="slider-nav next">
-        <i class="fas fa-chevron-right"></i>
-      </button>
+
+      <div class="mt-16 text-center">
+        <p class="text-gray-500 dark:text-gray-400 mb-6">Need a custom solution for your business?</p>
+        <a href="#contact"
+          class="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-700 text-white px-6 py-3 rounded-xl hover:bg-gray-900 dark:hover:bg-gray-600 transition font-medium">
+          <span>Contact Sales</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
-    
-    <!-- Slider Dots -->
-    <div class="slider-dots">
-      <div 
-        v-for="index in totalSlides" 
-        :key="index"
-        class="slider-dot" 
-        :class="{ 'active': currentSlide === index - 1 }"
-        @click="goToSlide(index - 1)"
-      ></div>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import UserManagementSlide from './SliderSlides/UserManagementSlide.vue'
-import AnalyticsSlide from './SliderSlides/AnalyticsSlide.vue'
-import ProjectManagementSlide from './SliderSlides/ProjectManagementSlide.vue'
+const basicFeatures = [
+  { text: 'Laravel Service Pattern', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'Blade Templates', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'jQuery DataTable', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'API Integration', iconClass: 'fas fa-times text-red-400', textClass: 'text-gray-500 dark:text-gray-500' },
+  { text: 'Advanced Features', iconClass: 'fas fa-times text-red-400', textClass: 'text-gray-500 dark:text-gray-500' }
+];
 
-const currentSlide = ref(0)
-const totalSlides = 3
-let autoSlideInterval
+const standardFeatures = [
+  { text: 'Laravel Service Pattern', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'Interface Binding', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'API + Blade/jQuery', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'DataTable Integration', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'Advanced Features', iconClass: 'fas fa-times text-red-400', textClass: 'text-gray-500 dark:text-gray-500' }
+];
 
-const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % totalSlides
-  resetAutoSlide()
-}
+const enterpriseFeatures = [
+  { text: 'Laravel Service Repository', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'Interface Binding', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'API + Blade + jQuery', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'DataTable Integration', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' },
+  { text: 'Advanced Features', iconClass: 'fas fa-check text-green-500', textClass: 'text-gray-600 dark:text-gray-300' }
+];
 
-const prevSlide = () => {
-  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides
-  resetAutoSlide()
-}
+const viewPackageDetails = (packageType) => {
+  const event = new CustomEvent('show-package-modal', { detail: packageType });
+  window.dispatchEvent(event);
+};
 
-const goToSlide = (index) => {
-  currentSlide.value = index
-  resetAutoSlide()
-}
+const buyPackage = (packageType) => {
+  const event = new CustomEvent('show-purchase-modal', { detail: packageType });
+  window.dispatchEvent(event);
+};
 
-const startAutoSlide = () => {
-  autoSlideInterval = setInterval(nextSlide, 5000)
-}
-
-const resetAutoSlide = () => {
-  clearInterval(autoSlideInterval)
-  startAutoSlide()
-}
-
-onMounted(() => {
-  startAutoSlide()
-})
-
-onUnmounted(() => {
-  clearInterval(autoSlideInterval)
-})
+// SEO Structured Data for Products
+const JsonLdProducts = () => {
+  useJsonld([
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'AppBuilder Pro Basic',
+      description: 'Perfect for small projects with Laravel Service Pattern and Blade Templates',
+      offers: {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'USD',
+        priceValidUntil: '2024-12-31'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'AppBuilder Pro Standard',
+      description: 'For growing businesses with API integration and advanced features',
+      offers: {
+        '@type': 'Offer',
+        price: '99',
+        priceCurrency: 'USD',
+        priceValidUntil: '2024-12-31'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'AppBuilder Pro Enterprise',
+      description: 'For large organizations with full feature set and dedicated support',
+      offers: {
+        '@type': 'Offer',
+        price: '199',
+        priceCurrency: 'USD',
+        priceValidUntil: '2024-12-31'
+      }
+    }
+  ]);
+};
 </script>
-
-<style scoped>
-.slider-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.5rem;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slider-slide {
-  min-width: 100%;
-  transition: opacity 0.5s ease;
-}
-
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  margin: 0 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.slider-dot.active {
-  background-color: white;
-  transform: scale(1.2);
-}
-
-.slider-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.slider-nav:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.slider-nav.prev {
-  left: 15px;
-}
-
-.slider-nav.next {
-  right: 15px;
-}
-
-.slide-fade {
-  animation: slideFade 0.8s ease-in-out;
-}
-
-@keyframes slideFade {
-  from {
-    opacity: 0.7;
-    transform: translateX(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-</style>

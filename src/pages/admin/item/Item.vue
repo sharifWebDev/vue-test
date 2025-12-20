@@ -9,7 +9,7 @@
         <div class="col-auto">
           <button
             @click="handleAdd"
-            class="btn btn-primary btn-md me-2"
+ class="btn btn-gray btn-md me-2"
             :disabled="loadingBtn.add"
           >
             <span v-if="loadingBtn.add">
@@ -81,7 +81,7 @@
 
                   <router-link
                     :to="{ name: 'EditItem', params: { id: product.id } }"
-                    class="btn btn-primary btn-sm me-2"
+ class="btn btn-gray btn-sm me-2"
                   >
                     Edit
                   </router-link>

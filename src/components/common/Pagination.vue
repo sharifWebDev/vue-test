@@ -20,7 +20,7 @@
           v-model="localPerPage"
           :disabled="loadingAllData"
           @change="handlePerPageChange"
-          class="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm
+ class="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm
                  bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300
                  focus:outline-none focus:ring-2 focus:ring-gray-600
                  transition-all shadow-sm disabled:opacity-60"
@@ -48,7 +48,7 @@
             :class="[
               'px-2 py-1.5 rounded-lg text-sm font-medium min-w-[2rem] transition-all',
               page === currentPage
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-gray-600 text-white shadow-sm'
                 : 'bg-gray-200 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700'
             ]"
           >
@@ -70,7 +70,7 @@
   <!-- Loading Overlay -->
   <div v-if="loadingAllData" class="fixed inset-0 bg-gray-400/50 flex items-center justify-center z-50">
     <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-xl text-center">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-600 mx-auto mb-4"></div>
       <p class="text-gray-700 dark:text-gray-300 font-medium">Loading all data, please wait...</p>
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">This may take a moment for large datasets</p>
     </div>
@@ -87,7 +87,7 @@
       </div>
       <p class="text-gray-600 dark:text-gray-300 mb-6">
         You are about to load
-        <span class="font-bold text-blue-600">{{ totalItems.toLocaleString() }}</span>
+        <span class="font-bold text-gray-600">{{ totalItems.toLocaleString() }}</span>
         records. This may slow down your browser.
       </p>
       <div class="flex justify-end space-x-3">
@@ -99,7 +99,7 @@
         </button>
         <button
           @click="confirmLoadAll"
-          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md"
+          class="px-4 py-2 text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 rounded-lg shadow-md"
         >
           Yes, Load All
         </button>

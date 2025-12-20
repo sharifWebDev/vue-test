@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/authStore";
 
 // Layouts
-import WebsiteLayout from "@/layouts/WebsiteLayout.vue";
+import WebsiteLayout from "@/layouts/Website/WebsiteLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
-import DashboardLayout from "@/layouts/DashboardLayout.vue";
+import DashboardLayout from "@/layouts/Dashboard/DashboardLayout.vue";
 
 const routes = [
   /* ================= Website (Customer Landing) ================= */
@@ -29,7 +29,7 @@ const routes = [
       {
         path: "login",
         name: "Login",
-        component: () => import("@/pages/Login.vue"),
+        component: () => import("@/pages/auth/Login.vue"),
         meta: {
           title: "Login",
           guestOnly: true,

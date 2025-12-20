@@ -8,11 +8,11 @@
     </div>
   </div>
 
-  <div class="bg-white dark:bg-gray-800 p-3 rounded-lg"> 
+  <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
     <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
       <div>
         <button @click="openCreateModal"
-          class="btn px-3 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-lg flex items-center space-x-2 transition-colors">
+          class="btn px-3 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-lg flex items-center space-x-2 transition-colors">
           <i class="fas fa-plus"></i>
           <span>Create New</span>
         </button>
@@ -45,10 +45,12 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 SL
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Image
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Code & Name
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -57,7 +59,8 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Created
               </th>
               <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -121,7 +124,7 @@
                 
                 <button
                   @click="toggleStatus(data)"
-                  class="p-1 rounded bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-900/30 transition-colors"
+                    class="p-1 rounded bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-900/30 transition-colors"
                   title="Toggle Status"
                 >
                   <span
@@ -144,7 +147,7 @@
                 </button>
     
                   <button @click="viewSizeType(data)"
-                    class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded bg-blue-50 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                    class="text-cyan-600 hover:text-cyan-900 dark:text-cyan-400 dark:hover:text-cyan-300 p-1 rounded bg-blue-50 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
                     title="View">
                     <i class="fas fa-eye"></i>
                   </button>
@@ -163,7 +166,8 @@
             </tr>
 
             <!-- Empty State -->
-            <tr v-if="sizeTypeStore.sizeTypes.length === 0 && !sizeTypeStore.loading" class="h-[55vh] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <tr v-if="sizeTypeStore.sizeTypes.length === 0 && !sizeTypeStore.loading"
+              class="h-[55vh] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
               <td colspan="7" class="px-6 py-12 text-center">
                 <div class="text-gray-500 dark:text-gray-400">
                   <i class="fas fa-ruler text-3xl mb-4"></i>
@@ -199,9 +203,9 @@
             <input v-model="formData.code" type="text" required
               @input="clearValidationError('code')"
               :class="[
-                'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors',
+  'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-500 focus:outline-none transition-colors',
                 sizeTypeStore.validationErrors.code 
-                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white' 
+                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white'
                   : 'border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-gray-500'
               ]"
               placeholder="Enter size type code (e.g., PSZT-001)">
@@ -221,9 +225,9 @@
             <input v-model="formData.name" type="text" required
               @input="clearValidationError('name')"
               :class="[
-                'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors',
+  'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-500 focus:outline-none transition-colors',
                 sizeTypeStore.validationErrors.name 
-                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white' 
+                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white'
                   : 'border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-gray-500'
               ]"
               placeholder="Enter size type name">
@@ -240,9 +244,9 @@
             <input v-model="formData.sequence" type="number" min="1"
               @input="clearValidationError('sequence')"
               :class="[
-                'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors',
+  'w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-500 focus:outline-none transition-colors',
                 sizeTypeStore.validationErrors.sequence 
-                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white' 
+                  ? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-900/20 text-gray-900 dark:text-white'
                   : 'border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-gray-500'
               ]"
               placeholder="Enter display sequence">
@@ -333,11 +337,11 @@
         <!-- Form Actions -->
         <div class="mt-6 flex justify-end space-x-3">
           <button type="button" @click="closeModal"
-            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500">
+            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500">
             Cancel
           </button>
           <button type="submit" :disabled="sizeTypeStore.loading" :class="[
-            'px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500',
+  'px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500',
             sizeTypeStore.loading ?
               'bg-gray-400 cursor-not-allowed' :
               'bg-gray-600 hover:bg-gray-700'
@@ -427,11 +431,11 @@
       <!-- Actions -->
       <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-700 flex justify-end space-x-3">
         <button type="button" @click="closeViewModal"
-          class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500">
+          class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500">
           Close
         </button>
         <button @click="editSizeType(viewingSizeType)"
-          class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500">
+          class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500">
           Edit Size Type
         </button>
       </div>
@@ -456,11 +460,11 @@
 
         <div class="flex justify-end space-x-3">
           <button @click="closeDeleteModal"
-            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500">
+            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500">
             Cancel
           </button>
           <button @click="handleDelete" :disabled="sizeTypeStore.loading" :class="[
-            'px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500',
+  'px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors focus:outline-none focus:ring-1 focus:ring-gray-500',
             sizeTypeStore.loading ?
               'bg-red-400 cursor-not-allowed' :
               'bg-red-600 hover:bg-red-700'

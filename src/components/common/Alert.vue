@@ -21,7 +21,7 @@ onMounted(() => {
     >
       <div 
         class="absolute left-0 top-0 bottom-0 w-1.5"
-        :class="type === 'error' ? 'bg-red-500' : 'bg-emerald-500'"
+ :class="type === 'error' ? 'bg-red-500' : 'bg-gray-500'"
       ></div>
 
       <div class="p-5">
@@ -29,10 +29,10 @@ onMounted(() => {
           <div class="flex-shrink-0">
             <div 
               class="flex h-10 w-10 items-center justify-center rounded-full"
-              :class="type === 'error' ? 'bg-red-100 dark:bg-red-900/30' : 'bg-emerald-100 dark:bg-emerald-900/30'"
+              :class="type === 'error' ? 'bg-red-100 dark:bg-red-900/30' : 'bg-gray-100 dark:bg-gray-900/30'"
             >
               <i v-if="type === 'error'" class="fas fa-exclamation text-red-600 dark:text-red-400"></i>
-              <i v-else class="fas fa-check text-emerald-600 dark:text-emerald-400"></i>
+              <i v-else class="fas fa-check text-gray-600 dark:text-gray-400"></i>
             </div>
           </div>
           
@@ -59,7 +59,7 @@ onMounted(() => {
       <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-gray-100 dark:bg-gray-800">
         <div 
           class="h-full opacity-60 transition-all linear"
-          :class="type === 'error' ? 'bg-red-500' : 'bg-emerald-500'"
+ :class="type === 'error' ? 'bg-red-500' : 'bg-gray-500'"
           :style="{ width: '100%', animation: `shrink ${duration}ms linear forwards` }"
         ></div>
       </div>

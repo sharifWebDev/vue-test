@@ -14,7 +14,7 @@
       <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
         <!-- Logo -->
         <a href="/dashboard" class="flex items-center space-x-2">
-          <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div class="w-9 h-9 bg-gray-600 rounded-lg flex items-center justify-center">
             <i class="fa fa-cube text-white text-xl" aria-hidden="true"></i>
           </div>
           <span 

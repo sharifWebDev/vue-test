@@ -4,8 +4,8 @@
       @click="toggleUserMenu"
       class="flex items-center space-x-2 p-1.5 rounded-lg bg-gray-100 dark:bg-gray-700"
     >
-      <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
-        <span class="text-primary-600 dark:text-primary-400 text-xs font-medium">JD</span>
+      <div class="w-8 h-8 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center">
+        <span class="text-gray-600 dark:text-gray-400 text-xs font-medium">JD</span>
       </div>
       <span class="text-gray-700 dark:text-gray-300 hidden md:block text-sm">John Doe</span>
       <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 text-xs"></i>
